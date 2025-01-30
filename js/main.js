@@ -1,3 +1,24 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const API_BASE_URL = "https://ct-project-backend.onrender.com"; // Backend URL
+
+    fetch(`${API_BASE_URL}/api/data`)  // Change `/api/data` to the correct endpoint
+        .then(response => response.json())
+        .then(data => {
+            console.log("Received data:", data);
+
+            // Example: Display fetched data in a div
+            const outputDiv = document.getElementById('output'); // Make sure this exists in your HTML
+            if (outputDiv) {
+                outputDiv.innerHTML = JSON.stringify(data, null, 2);
+            }
+        })
+        .catch(error => console.error("Error fetching data:", error));
+});
+
+
+
+
+
 document.getElementById('left-sidebar-toggle').addEventListener('click', function() {
     const sidebar = document.getElementById('left-sidebar');
     sidebar.classList.toggle('active');
